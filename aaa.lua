@@ -3862,27 +3862,7 @@ function Library:CreateWindow(...)
         if Toggled then
             Outer.Visible = false;
 
-            task.spawn(function()
-                -- TODO: add cursor fade?
-			    local State = InputService.MouseIconEnabled;
-                local Cursor, CursorOutline;
-				
-				if Library.ShowCustomCursor then
-					local CursorSuccess, CursorError = pcall(function()
-						Cursor = Drawing.new('Triangle');
-						Cursor.Thickness = 1;
-						Cursor.Filled = true;
-						Cursor.Visible = true;
-
-						CursorOutline = Drawing.new('Triangle');
-						CursorOutline.Thickness = 1;
-						CursorOutline.Filled = false;
-						CursorOutline.Color = Color3.new(0, 0, 0);
-						CursorOutline.Visible = true;
-
-						while Toggled and ScreenGui.Parent and Library.ShowCustomCursor do
-							InputService.MouseIconEnabled = false;
-
+  
 							local mPos = InputService:GetMouseLocation();
 
 							Cursor.Color = Library.AccentColor;
